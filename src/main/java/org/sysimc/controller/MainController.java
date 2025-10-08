@@ -3,6 +3,9 @@ package org.sysimc.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.sysimc.model.Pessoa;
+
+import java.text.DecimalFormat;
 
 public class MainController {
     @FXML
@@ -11,12 +14,27 @@ public class MainController {
     public TextField txtAltura;
     @FXML
     public TextField txtPeso;
+    @FXML
+    public Label lbIMC;
+    @FXML
+    public Label lbclassificacao;
+
+    Pessoa pessoa = new Pessoa();
 
     @FXML
     protected void onCalcularIMCClick() {
-        System.out.println(this.txtNome.getText());
-        System.out.println(this.txtAltura.getText());
-        System.out.println(this.txtPeso.getText());
+        DecimalFormat df = new DecimalFormat();
+        this.pessoa.setNome(this.txtNome.getText());
+        this.pessoa.setAltuta(Float.parseFloat( this.txtAltura.getText()));
+        this.pessoa.setPeso(Float.parseFloat(this.txtPeso.getText()));
+
+
+        df.applyPattern("#0.00");
+        this.lbIMC.setText(df.format(this.pessoa.calcularIMC()));
+        this.lbclassificacao.setText(this.pessoa.classificacaoIMC());
+
+
+
 
 
     }
