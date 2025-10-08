@@ -6,15 +6,17 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sysimc.controller.MainController">
    <children>
       <MenuBar>
         <menus>
@@ -47,7 +49,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <VBox.margin>
-                        <Insets left="22.0" right="22.0" top="30.0" />
+                        <Insets left="22.0" right="22.0" top="15.0" />
                      </VBox.margin>
                      <children>
                         <Label text="Digite seu nome:">
@@ -74,14 +76,14 @@
                               <Insets />
                            </GridPane.margin>
                         </Label>
-                        <TextField promptText="Nome" GridPane.rowIndex="1" />
-                        <TextField promptText="Altura" GridPane.rowIndex="3" />
-                        <TextField promptText="Peso" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtNome" promptText="Nome" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtAltura" promptText="Altura" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtPeso" promptText="Peso" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="54.0" prefWidth="366.0">
                      <children>
-                        <Button mnemonicParsing="false" prefWidth="100.0" text="Calcular IMC" textAlignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#onCalcularIMCClick" prefWidth="100.0" text="Calcular IMC" textAlignment="CENTER" />
                         <Button mnemonicParsing="false" prefWidth="100.0" text="Salvar" textAlignment="CENTER">
                            <HBox.margin>
                               <Insets left="20.0" right="20.0" />
@@ -97,12 +99,33 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="262.0" prefWidth="243.0">
                <children>
-                  <Label text="Label" />
-                  <Label text="Label" />
-                  <Label text="Label" />
+                  <Label text="Cálculo IMC">
+                     <font>
+                        <Font size="34.0" />
+                     </font></Label>
+                  <Label text="00.00">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="74.0" />
+                     </font></Label>
+                  <Label>
+                     <font>
+                        <Font size="23.0" />
+                     </font></Label>
                </children>
             </VBox>
          </children>
       </HBox>
+      <TableView prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="300.0" text="Nome" />
+            <TableColumn prefWidth="75.0" text="Altura" />
+            <TableColumn prefWidth="75.0" text="Peso" />
+            <TableColumn prefWidth="75.0" text="IMC" />
+        </columns>
+      </TableView>
    </children>
 </VBox>
